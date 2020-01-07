@@ -1,0 +1,26 @@
+
+The rgb() method is incomplete. Complete the method so that passing in RGB decimal values will result in a 
+hexadecimal representation being returned. The valid decimal values for RGB are 0 - 255. Any (r,g,b) argument
+values that fall out of that range should be rounded to the closest valid value.
+
+The toString() function is useful for this purpose as it takes a radix (base) number when you use Number.prototype.toString();
+
+This becomes the basis for the function. I then create a function to pass the r,g,b numbers into. After that, all that needs
+to be done is to add a '0' if less than 16, and to pass in 255 if the number passed into the funciton is > 255 and 
+0 if less than 0.
+
+function toHex(n){
+    return Number(n).toString(16);
+}
+function rgb(r, g, b){
+  // complete this function 
+  console.log(r,g,b);
+    var arr=[r,g,b];
+    var output= arr.map((num) => { 
+        if (num >255) return toHex(255);
+        else if (num <0) return '0'+ toHex(0);
+        else if (num < 16) return '0' + toHex(num);
+        return toHex(num); 
+    });
+    return output.join('').toUpperCase()
+}
